@@ -18,14 +18,18 @@ import javax.persistence.Table;
 public class Tarefa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
+
 	@Column(name = "DESCRICAO", nullable = false, length = 45)
 	private String descricao;
+
 	@Column(name = "DURACAO", nullable = false)
 	private Integer duracao;
+
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "tarefas")
 	private Set<Funcionario> funcionarios = new HashSet<>();
 
@@ -60,5 +64,4 @@ public class Tarefa implements Serializable {
 	public void setFuncionarios(Set<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
-
 }

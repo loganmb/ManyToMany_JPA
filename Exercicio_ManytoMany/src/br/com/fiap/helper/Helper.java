@@ -22,6 +22,8 @@ public class Helper {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw e;
+		} finally {
+			em.close();
 		}
 	}
 
@@ -34,9 +36,8 @@ public class Helper {
 
 	@SuppressWarnings("unchecked")
 	public Funcionario buscarFuncionario(String numMatricula) {
-
-		Query query = em.createQuery("select f from Funcionario f where matricula = :matricula")
-				.setParameter("matricula", numMatricula);
+		Query query = em.createQuery("select f from Funcionario f where matricula = :matricula");
+		query.setParameter("matricula", numMatricula);
 		Funcionario f = (Funcionario) query.getSingleResult();
 		return f;
 	}

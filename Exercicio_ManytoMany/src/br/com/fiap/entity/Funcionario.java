@@ -37,10 +37,10 @@ public class Funcionario implements Serializable {
 	@Column(name = "NOME_FUNCIONARIO", unique = true, nullable = false, length = 45)
 	private String nome;
 
-	@ManyToMany(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
-	@JoinTable(name="FUNCIONARIO_TAREFA", catalog = "dbtarefas", joinColumns = 
-	{@JoinColumn(name="FUNCIONARIO_ID", nullable=false, updatable = false)}, 
-		   inverseJoinColumns = {@JoinColumn(name="TAREFA_ID", nullable= false,updatable=false)})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "FUNCIONARIO_TAREFA", catalog = "dbtarefas", joinColumns = {
+			@JoinColumn(name = "FUNCIONARIO_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "TAREFA_ID", nullable = false, updatable = false) })
 	private Set<Tarefa> tarefas = new HashSet<>();
 
 	public Integer getId() {
@@ -75,6 +75,4 @@ public class Funcionario implements Serializable {
 		this.tarefas = tarefas;
 	}
 
-	
-	
 }
